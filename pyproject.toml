@@ -4,32 +4,36 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
-  "boto3>=1.42.1",
-  "clean-text>=0.6.0",
+
+dependencies = []
+
+[dependency-grous]
+integration = [
+  "pytest",
+  "flake8",
+  "pylint",
+  "mypy",
+  "ruff",
+  "pre-commit"
+]
+
+deployment = [
   "fastapi>=0.118.2",
-  "joblib>=1.5.2",
+  "boto3>=1.42.1",
   "markupsafe<3.1",
   "pydantic-settings>=2.11.0",
-  "sentence-transformers>=5.1.1",
-  "torch>=2.7.0",
-  "transformers>=4.57.0",
+  "onnx",
+]
+
+inference = [
+  "fastapi>=0.118.2",
   "uvicorn>=0.37.0",
+  "pydantic-settings>=2.11.0",
+  "onnxruntime>=1.18.0",
+  "tokenizers>=0.19.1",
 ]
 
-[tool.uv.sources]
-torch = [
-  { index = "pytorch-cpu" },
-]
-
-
-[[tool.uv.index]]
-name = "pytorch-cpu"
-url = "https://download.pytorch.org/whl/cpu"
-explicit = true
-
-[dependency-groups]
 dev = [
-    "pre-commit>=4.3.0",
-    "pytest>=8.4.2",
+  "pre-commit>=4.3.0",
+  "pytest>=8.4.2",
 ]
