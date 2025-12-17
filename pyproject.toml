@@ -10,7 +10,6 @@ dependencies = []
 [dependency-grous]
 integration = [
   "pytest",
-  "flake8",
   "pylint",
   "mypy",
   "ruff",
