@@ -44,7 +44,9 @@ Application has starded successfully.
 
 
 ```bash
-curl -X POST https://ue686irphd.execute-api.us-east-1.amazonaws.com/predict \
-     -H "Content-Type: application/json" \
-     -d '{"text": "MLOps is amazing!"}'
+jerzy-boksa@jerzyb-laptop:~$ curl -X POST https://ue686irphd.execute-api.us-east-1.amazonaws.com/predict \  
+    -H "Content-Type: application/json" \
+    -d '{"text": "MLOps is amazing!"}'
+    
+{"prediction":"positive"}
 ```
