@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 env:
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: mlops_lab
+  ECR_REPOSITORY: sentiment-app-onnx
   S3_BUCKET: jerzyb-s3-bucket-mlops-lab
 
 jobs:
