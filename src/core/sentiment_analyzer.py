@@ -1,22 +1,39 @@
-from sentence_transformers import SentenceTransformer
-from sklearn.linear_model import LogisticRegression
+import numpy as np
+import onnxruntime as ort
+from tokenizers import Tokenizer
 
 from src.core.exception import InvalidInputError
 
 
 class SentimentAnalyzer:
-    def __init__(self, embedder: SentenceTransformer, classifier: LogisticRegression):
-        self.embedder = embedder
-        self.classifier = classifier
+    def __init__(
+        self,
+        embedding_session: ort.InferenceSession,
+        classifier_session: ort.InferenceSession,
+        tokenizer: Tokenizer,
+    ):
+        self.embedding_session = embedding_session
+        self.classifier_session = classifier_session
+        self.tokenizer = tokenizer
 
     def predict(self, text: str) -> str:
         if text is None or text.strip() == "":
             raise InvalidInputError("Text cannot be empty")
 
-        embedding = self.embedder.encode([text])
-        label = self.classifier.predict(embedding)[0]
+        encoded = self.tokenizer.encode(text)
 
-        return self._map_label(label)
+        input_ids = np.array([encoded.ids])
+        attention_mask = np.array([encoded.attention_mask])
+
+        embedding_inputs = {"input_ids": input_ids, "attention_mask": attention_mask}
+        embeddings = self.embedding_session.run(None, embedding_inputs)[0]
+        embeddings = np.asarray(embeddings)
+
+        classifier_input_name = self.classifier_session.get_inputs()[0].name
+        classifier_inputs = {classifier_input_name: embeddings.astype(np.float32)}
+        prediction = self.classifier_session.run(None, classifier_inputs)[0]
+
+        return self._map_label(prediction[0])
 
     def _map_label(self, label: int) -> str:
         if label == 0:
@@ -26,4 +43,4 @@ class SentimentAnalyzer:
         elif label == 2:
             return "positive"
         else:
-            raise ValueError(f"Unknown label: {label}")
+            return "unknown"
