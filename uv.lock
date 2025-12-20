@@ -452,6 +452,7 @@ deployment = [
     { name = "markupsafe" },
     { name = "onnx" },
     { name = "pydantic-settings" },
+    { name = "sentence-transformers" },
     { name = "skl2onnx" },
 ]
 dev = [
@@ -485,6 +486,7 @@ deployment = [
     { name = "markupsafe", specifier = "<3.1" },
     { name = "onnx" },
     { name = "pydantic-settings", specifier = ">=2.11.0" },
+    { name = "sentence-transformers", specifier = ">=5.1.1" },
     { name = "skl2onnx" },
 ]
 dev = [
