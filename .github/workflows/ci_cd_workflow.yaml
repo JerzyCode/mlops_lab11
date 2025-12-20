@@ -40,7 +40,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: us-east-1 # ${{ env.AWS_REGION }}
+          aws-region:  ${{ env.AWS_REGION }}
       
       - name: Setup uv
         uses: astral-sh/setup-uv@v7
@@ -49,12 +49,12 @@ jobs:
         run: uv sync --group deployment
 
       - name: Download model from S3
-        run: uv run -m scripts.download_artifacts
+        run: uv run -m src.scripts.download_artifacts
 
       - name: Export model to ONNX
         run: | 
-          uv run -m scripts.export_classifier_to_onnx
-          uv run -m scripts.export_sentence_transformer_to_onnx
+          uv run -m src.scripts.export_classifier_to_onnx
+          uv run -m src.scripts.export_sentence_transformer_to_onnx
 
       - name: Login to ECR
         id: login-ecr
