@@ -24,4 +24,4 @@ COPY main.py ./main.py
 EXPOSE 8000
 
 ENTRYPOINT ["python", "-m", "awslambdaric"]
-CMD ["app.handler"]
+CMD ["src.app.handler"]

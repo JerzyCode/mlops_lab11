@@ -37,3 +37,14 @@ Application has starded successfully.
 - added steps to the workflow.yaml
 - added mangum for aws lambda
 - added sam-template.yaml and other steps in deployment
+- debugging and fixing
+- successfully done
+
+![deployed aws](deployed_aws.png)
+
+
+```bash
+curl -X POST https://ue686irphd.execute-api.us-east-1.amazonaws.com/predict \
+     -H "Content-Type: application/json" \
+     -d '{"text": "MLOps is amazing!"}'
+```
