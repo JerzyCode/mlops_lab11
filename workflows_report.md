@@ -27,3 +27,12 @@ Noticed the massive reduction of the size. Previous docker image had 1.33GB size
 
 Application has starded successfully.
 
+
+
+## Exercise 4
+
+
+- added secrets to github
+- created ECR repository
+- added steps to the workflow.yaml
+- added mangum for aws lambda

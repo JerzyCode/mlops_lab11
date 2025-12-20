@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from mangum import Mangum
 from onnxruntime import InferenceSession
 from tokenizers import Tokenizer
 
@@ -11,6 +12,7 @@ from src.utils.logger import log
 settings = Settings()
 
 app = FastAPI()
+handler = Mangum(app)
 
 embedding_session = InferenceSession(settings.ONNX_EMBEDDING_MODEL_PATH)
 classifier_session = InferenceSession(settings.ONNX_CLASSIFIER_PATH)
