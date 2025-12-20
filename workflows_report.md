@@ -80,3 +80,8 @@ Image tags:
 
 github sha: 5a8c7feb763fde7736b19aa65fb6c5f463746625
 image tag: 5a8c7feb763fde7736b19aa65fb6c5f463746625
+
+
+## Lab and Homework workflow history
+
+![alt text](imgs/workflow_history.png)
