@@ -1,9 +1,10 @@
 # export_classifier_to_onnx.py
 
 import joblib
-from settings import Settings
 from skl2onnx import convert_sklearn
 from skl2onnx.common.data_types import FloatTensorType
+
+from src.scripts.download_artifacts import Settings
 
 
 def export_classifier_to_onnx(settings: Settings):
@@ -24,3 +25,10 @@ def export_classifier_to_onnx(settings: Settings):
     # TODO: save the onnx_model to settings.ONNX_CLASSIFIER_PATH
     with open(settings.ONNX_CLASSIFIER_PATH, "wb") as f:
         f.write(onnx_model.SerializeToString())
+
+    print("ONNX model exported successfully.")
+
+
+if __name__ == "__main__":
+    settings = Settings()
+    export_classifier_to_onnx(settings)

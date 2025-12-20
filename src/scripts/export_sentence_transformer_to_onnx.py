@@ -5,7 +5,7 @@ import os
 import torch
 from transformers import AutoModel, AutoTokenizer
 
-from src.utils.config import Settings
+from utils.config import Settings
 
 
 # Wrapper to include Mean Pooling in the ONNX graph
