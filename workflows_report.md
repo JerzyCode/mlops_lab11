@@ -42,7 +42,7 @@ Application has starded successfully.
 - debugging and fixing
 - successfully done
 
-![deployed aws](deployed_aws.png)
+![deployed aws](imgs/deployed_aws.png)
 
 
 ```bash
@@ -59,3 +59,15 @@ jerzy-boksa@jerzyb-laptop:~$ curl -X POST https://ue686irphd.execute-api.us-east
 ## Exercise 1
 
 - added neccessary modifications for the ci_cd_workflow.yaml
+
+## Exercise 2
+
+- Added ECR
+
+![alt text](imgs/created_ecr.png)
+
+- Created secret keys
+
+![alt text](imgs/secret_keys.png)
+
+- steps are already implemented in workflow file.
