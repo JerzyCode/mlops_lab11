@@ -36,3 +36,4 @@ Application has starded successfully.
 - created ECR repository
 - added steps to the workflow.yaml
 - added mangum for aws lambda
+- added sam-template.yaml and other steps in deployment
