@@ -18,7 +18,7 @@ integration = [
   "scikit-learn>=1.7.2",
   "sentence-transformers>=5.1.1",
   "pydantic-settings>=2.11.0",
-  ]
+]
 
 deployment = [
   "fastapi>=0.118.2",
