@@ -71,3 +71,12 @@ jerzy-boksa@jerzyb-laptop:~$ curl -X POST https://ue686irphd.execute-api.us-east
 ![alt text](imgs/secret_keys.png)
 
 - steps are already implemented in workflow file.
+
+
+Image tags:
+
+![alt text](imgs/image_tags.png)
+
+
+github sha: 5a8c7feb763fde7736b19aa65fb6c5f463746625
+image tag: 5a8c7feb763fde7736b19aa65fb6c5f463746625
