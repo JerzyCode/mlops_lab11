@@ -1,5 +1,15 @@
 name: CI/CD workflow
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      steps:
+        description: 'Select which steps to run in the pipeline. "integration" will only run tests and checks. "all" will run both integration and deployment.'
+        required: true
+        type: choice
+        options:
+          - integration
+          - all
+        default: all
 
 env:
   AWS_REGION: us-east-1
@@ -10,6 +20,7 @@ jobs:
   integration:
     name: checks_and_tests
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.steps == 'integration' || github.event.inputs.steps == 'all' }}
     steps:
       - name: Checkout code repo
         uses: actions/checkout@v4
@@ -30,6 +41,7 @@ jobs:
     needs: integration
     name: Deploy application
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.steps == 'all' && needs.integration.result == 'success' }}
     steps:
       - name: Checkout code repo
         uses: actions/checkout@v4
