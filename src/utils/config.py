@@ -13,7 +13,7 @@ class Settings(BaseSettings):
 
     CLASSIFIER_JOBLIB_PATH: str = "model/classifier/classifier.joblib"
     SENTENCE_TRANSFORMER_DIR: str = "model/sentence_transformer"
-    TOKENIZER_PATH: str = "model/tokenizer/tokenizer.json"
+    TOKENIZER_PATH: str = "model/onnx/tokenizer/tokenizer.json"
 
     ONNX_EMBEDDING_MODEL_PATH: str = "model/onnx/sentence_transformer.onnx"
     ONNX_CLASSIFIER_PATH: str = "model/onnx/classifier.onnx"
